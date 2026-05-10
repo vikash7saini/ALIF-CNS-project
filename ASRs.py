@@ -1,30 +1,24 @@
+import whisper
 import os
-import asr_decode
-import engine
 
-'''
-You need to implement these functions by yourself.
-These functions are used to get the speech recognition results of the corresponding API for the input audio.
-The parameter "srcdir" is the directory of the audio file and "file" is the name of the file.
-"trans" is the recognition result.
-'''
+model = whisper.load_model("base")
 
-def get_trans_tencent(srcdir, file):        
-    trans=""
-    return trans
+def transcribe_audio(srcdir, file):
+    path = os.path.join(srcdir, file)
+    result = model.transcribe(path)
+    return result["text"]
 
-def get_trans_iflytek(srcdir, file):        
-    trans=""  
-    return trans
+def get_trans_tencent(srcdir, file):
+    return transcribe_audio(srcdir, file)
 
-def get_trans_amazon(srcdir, file):        
-    trans=""
-    return trans
+def get_trans_iflytek(srcdir, file):
+    return transcribe_audio(srcdir, file)
 
-def get_trans_google(srcdir, file):        
-    trans=""  
-    return trans
+def get_trans_amazon(srcdir, file):
+    return transcribe_audio(srcdir, file)
+
+def get_trans_google(srcdir, file):
+    return transcribe_audio(srcdir, file)
 
 def get_trans_azure(srcdir, file):
-    trans=""
-    return trans
+    return transcribe_audio(srcdir, file)
